@@ -1,0 +1,70 @@
+:root {
+  --purple: #8c57ff;
+  --gray: rgb(46 38 61);
+}
+.text-sm {
+  font-size: 0.8rem !important;
+}
+.text-md {
+  font-size: 0.9rem !important;
+}
+
+.object-contain {
+  object-fit: contain !important;
+}
+.object-cover {
+  object-fit: cover !important;
+}
+
+.text-purple {
+  color: var(--purple) !important;
+}
+
+.bg-purple {
+  background-color: var(--purple) !important;
+}
+
+.text-gray {
+  color: var(--gray) !important;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.height-full {
+  height: 100vh !important;
+}
+
+.transform-nx-100 {
+  transform: translateX(-100%) !important;
+}
+.transform-px-100 {
+  transform: translateX(100%) !important;
+}
+.transform-py-100 {
+  transform: translateY(100%) !important;
+}
+.transform-ny-100 {
+  transform: translateY(-100%) !important;
+}
+
+.transition-slow {
+  transition: all 0.7s !important;
+}
+.transition-md {
+  transition: all 0.4s !important;
+}
+.transition-fast {
+  transition: all 0.2s !important;
+}
+.opacity-0 {
+  opacity: 0 !important;
+}
+.opacity-1 {
+  opacity: 1 !important;
+}
+
+.bg-purple-light {
+  background: #ede4ff !important;
+}
