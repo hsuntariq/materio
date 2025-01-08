@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { sidebar_data } from "../data/sidebar_data";
 
 const Sidebar = ({ openSidebar, setOpenSidebar }) => {
+  const [open, setOpen] = useState(false);
   return (
     <>
       <div
@@ -25,17 +26,23 @@ const Sidebar = ({ openSidebar, setOpenSidebar }) => {
             onClick={() => setOpenSidebar(false)}
           />
 
-          <ul className="d-flex text-capitalize fw-semibold px-3 gap-4 py-5 flex-column list-unstyled text-gray ">
+          <ul className="d-flex cursor-pointer text-capitalize fw-semibold px-3 gap-4 py-5 flex-column list-unstyled text-gray ">
             {sidebar_data?.map((item, index) => {
               return (
                 <>
-                  <li key={index} className="d-flex gap-1 align-items-center ">
+                  <li
+                    onClick={item?.myList ? () => setOpen(!open) : ""}
+                    key={index}
+                    className="d-flex gap-1 align-items-center "
+                  >
                     {item?.title} {item?.my_icon}
                   </li>
                   {item?.myList && (
                     <ul
-                      className="d-flex text-capitalize fw-semibold px-3 gap-4 
-                     flex-column list-unstyled text-gray"
+                      className={`d-flex ${
+                        open ? "height-100" : "height-0"
+                      }  overflow-hidden transition-fast text-capitalize fw-semibold px-3 gap-4 
+                     flex-column list-unstyled text-gray`}
                     >
                       {item?.myList?.map((item2, index2) => {
                         return (

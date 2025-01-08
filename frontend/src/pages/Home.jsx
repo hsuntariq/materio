@@ -1,5 +1,8 @@
 import React from "react";
 import Navbar from "../components/home/Navbar";
+import Hero from "../components/Hero";
+import Feature from "../components/home/Feature";
+import Slider from "../components/Slider";
 
 const Home = () => {
   return (
@@ -14,6 +17,9 @@ const Home = () => {
         }}
       >
         <Navbar />
+        <Hero />
+        <Feature />
+        <Slider />
       </div>
     </>
   );
