@@ -1,5 +1,5 @@
 import { Button, IconButton, TextField } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaEye,
   FaEyeSlash,
@@ -9,10 +9,12 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 import { RiFacebookFill } from "react-icons/ri";
-
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { registerMyUser, userReset } from "../../features/users/userSlice";
+import toast from "react-hot-toast";
+import { GridLoader } from "react-spinners";
 const RegForm = () => {
   const [showPass, setShowPass] = useState(false);
 
@@ -33,13 +35,34 @@ const RegForm = () => {
     });
   };
 
-  const handleRegistration = async () => {
-    const response = await axios.post(
-      "http://localhost:3001/api/users/register-user",
-      { username, email, password }
-    );
+  // call slice's function
 
-    console.log(response);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { userError, userMessage, userLoading, userSuccess, user } =
+    useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (userError) {
+      toast.error(userMessage);
+    }
+
+    if (userSuccess) {
+      toast.success(`Welcome ${user?.username}`);
+      navigate(`/admin/otp/${user?._id}`);
+    }
+
+    dispatch(userReset());
+  }, [userError, userSuccess]);
+
+  const handleRegistration = async () => {
+    // const response = await axios.post(
+    //   "http://localhost:3001/api/users/register-user",
+    //   { username, email, password }\
+    // );
+    // console.log(response);
+
+    dispatch(registerMyUser({ email, username, password }));
   };
 
   return (
@@ -159,11 +182,14 @@ const RegForm = () => {
         </div>
 
         <Button
+          disabled={userLoading}
           type="button"
           onClick={handleRegistration}
-          className="w-100 my-2 bg-purple text-white"
+          className={`w-100 my-2  ${
+            userLoading ? "bg-secondary" : "bg-purple"
+          }  text-white`}
         >
-          Sign Up
+          {userLoading ? <GridLoader size={4} color="white" /> : "Sign Up"}
         </Button>
 
         <p className="text-gray text-center my-2">

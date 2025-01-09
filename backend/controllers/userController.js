@@ -10,7 +10,7 @@ const generateOTP = () => {
   return FloorNum;
 };
 
-const sendOTP = (email, otp) => {
+const sendOTP = (email, otp, id) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -99,7 +99,7 @@ const sendOTP = (email, otp) => {
     <div class="body">
       <p>Use the following OTP to complete your process:</p>
       <div class="otp">${otp}</div>
-      <a href="#" style='color:white;font-weight:bold;background:green;' class="cta-button">Verify Now</a>
+      <a href="http://localhost:3000/admin/otp/${id}" style='color:white;font-weight:bold;background:green;' class="cta-button">Verify Now</a>
       <p class="note">This OTP is valid for 10 minutes. Do not share it with anyone.</p>
     </div>
     <div class="footer">
@@ -151,14 +151,13 @@ const registerUser = handler(async (req, res) => {
 
   // send mail
 
-  sendOTP(email, myOTP);
-
   const createdUser = await userModel.create({
     username,
     email,
     password: hashedPass,
     otp: myOTP,
   });
+  sendOTP(email, myOTP, createdUser?._id);
 
   // send the OTP to the mail
 

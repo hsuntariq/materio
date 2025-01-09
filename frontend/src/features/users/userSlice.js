@@ -1,24 +1,67 @@
-// 1.always import 2 things first
+// 1. import two things
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { regUser } from "./userService";
 
-// 2. define your initial state
+// get user from the localstorage
+
+const isUser = JSON.parse(localStorage.getItem("myUser"));
+
+// 2. define initial State
 
 const initialState = {
-  user: null,
+  user: isUser ? isUser : null,
   userLoading: false,
-  userSuccess: false,
-  userError: false,
   userMessage: "",
+  userError: false,
+  userSuccess: false,
 };
 
-// 3. create your slice / global state
+// 5. call the service function
 
-export const userSlice = createSlice({
-  name: "user",
+export const registerMyUser = createAsyncThunk(
+  "register-user",
+  async (data, thunkAPI) => {
+    try {
+      return await regUser(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+// 3. create slice / global state
+
+export const myUserSlice = createSlice({
+  name: "auth",
   initialState,
-  reducers: {},
-  extraReducers: () => {},
+  reducers: {
+    userReset: (state) => {
+      state.userLoading = false;
+      state.userError = false;
+      state.userSuccess = false;
+      state.userMessage = "";
+    },
+  },
+  // 6. handle the state
+  extraReducers: (builder) => {
+    builder
+      .addCase(registerMyUser.pending, (state, action) => {
+        state.userLoading = true;
+      })
+      .addCase(registerMyUser.rejected, (state, action) => {
+        state.userLoading = false;
+        state.userMessage = action.payload;
+        state.userError = true;
+      })
+      .addCase(registerMyUser.fulfilled, (state, action) => {
+        state.userLoading = false;
+        state.userSuccess = true;
+        state.user = action.payload;
+      });
+  },
 });
 
-// 4.export for registration of reducer to make it global
-export default userSlice.reducer;
+// 4. export it to register it and  make it global
+
+export default myUserSlice.reducer;
+export const { userReset } = myUserSlice.actions;

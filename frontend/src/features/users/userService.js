@@ -1,15 +1,13 @@
 import axios from "axios";
 
-export const registerUser = async (userData) => {
+export const regUser = async (data) => {
   const response = await axios.post(
     "http://localhost:3001/api/users/register-user",
-    userData
+    data
   );
 
-  //   save the user into the locastorage
-
   if (response.data) {
-    localStorage.setItem("user", JSON.stringify(response.data));
+    localStorage.setItem("myUser", JSON.stringify(response.data));
   }
 
   return response.data;
