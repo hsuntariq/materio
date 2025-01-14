@@ -12,3 +12,12 @@ export const regUser = async (data) => {
 
   return response.data;
 };
+
+export const verifyOTP = async (otpData) => {
+  const response = await axios.post(
+    `http://localhost:3001/api/users/verify-otp/${otpData?.id}`,
+    otpData
+  );
+
+  return response.data;
+};

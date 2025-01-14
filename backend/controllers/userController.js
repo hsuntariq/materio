@@ -1,6 +1,7 @@
 const handler = require("express-async-handler");
 const userModel = require("../models/userModel");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const nodemailer = require("nodemailer");
 
@@ -161,7 +162,14 @@ const registerUser = handler(async (req, res) => {
 
   // send the OTP to the mail
 
-  res.send(createdUser);
+  res.send({
+    _id: createdUser._id,
+    username: createdUser.username,
+    email: createdUser.email,
+    password: createdUser.password,
+    otp: createdUser.otp,
+    token: generateToken(createdUser._id),
+  });
 });
 
 const loginUser = handler(async (req, res) => {
@@ -183,7 +191,14 @@ const loginUser = handler(async (req, res) => {
 
   if (findUser) {
     if (await bcrypt.compare(password, findUser.password)) {
-      res.send(findUser);
+      res.send({
+        _id: findUser._id,
+        username: findUser.username,
+        email: findUser.email,
+        password: findUser.password,
+        otp: findUser.otp,
+        token: generateToken(findUser._id),
+      });
     } else {
       res.status(401);
       throw new Error("Invalid password");
@@ -191,7 +206,46 @@ const loginUser = handler(async (req, res) => {
   }
 });
 
+const verifyOTP = handler(async (req, res) => {
+  const user_id = req.params.id;
+  const { otp } = req.body;
+
+  if (!otp) {
+    res.status(400);
+    throw new Error("Please enter the OTP");
+  }
+
+  // find user
+
+  const findUser = await userModel.findById(user_id);
+
+  if (!findUser) {
+    res.status(404);
+    throw new Error("User not found");
+  }
+
+  if (findUser) {
+    if (findUser.otp == otp) {
+      findUser.otp = null;
+      findUser.save();
+      res.send(findUser);
+    } else {
+      res.status(401);
+      throw new Error("Invalid OTP");
+    }
+  }
+});
+
+// generate token
+
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: "15d",
+  });
+};
+
 module.exports = {
   registerUser,
   loginUser,
+  verifyOTP,
 };
