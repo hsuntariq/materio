@@ -207,7 +207,7 @@ const loginUser = handler(async (req, res) => {
 });
 
 const verifyOTP = handler(async (req, res) => {
-  const user_id = req.params.id;
+  const user_id = req.user._id;
   const { otp } = req.body;
 
   if (!otp) {
@@ -235,8 +235,6 @@ const verifyOTP = handler(async (req, res) => {
     }
   }
 });
-
-// generate token
 
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {

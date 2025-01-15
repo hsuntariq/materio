@@ -96,3 +96,12 @@
   background-image: url("https://demos.themeselection.com/marketplace/materio-mui-nextjs-admin-template/demo-1/images/pages/auth-v2-mask-light.png");
   background-size: cover;
 }
+
+.hover-gray {
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.hover-gray:hover {
+  background-color: #ececf2 !important;
+}

@@ -33,7 +33,8 @@ export const verifyOTPData = createAsyncThunk(
   "verify-otp",
   async (otpData, thunkAPI) => {
     try {
-      return await verifyOTP(otpData);
+      let token = thunkAPI.getState().auth.user.token;
+      return await verifyOTP(otpData, token);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);
     }

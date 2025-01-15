@@ -24,7 +24,7 @@ export default function OTP() {
   }, [userError, userSuccess]);
 
   const handleOTP = () => {
-    dispatch(verifyOTPData({ otp, id: user?._id }));
+    dispatch(verifyOTPData({ otp }));
   };
 
   return (

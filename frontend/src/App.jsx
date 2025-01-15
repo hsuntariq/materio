@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Register from "./pages/admin/Register";
 import { Toaster } from "react-hot-toast";
 import OTP from "./pages/admin/OTP";
+import Main from "./pages/admin/dashboard/Main";
 const App = () => {
   return (
     <>
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/admin">
             <Route path="register" element={<Register />} />
             <Route path="otp/:id" element={<OTP />} />
+            <Route path="dashboard" element={<Main />} />
           </Route>
 
           <Route path="*" element="Not Found" />
