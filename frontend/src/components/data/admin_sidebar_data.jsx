@@ -1,4 +1,26 @@
 import { FaHome } from "react-icons/fa";
+import { RiHomeSmileLine  } from "react-icons/ri";
+import { LuShoppingBag } from "react-icons/lu";
+import { LuGraduationCap } from "react-icons/lu";
+import { IoCarSportOutline } from "react-icons/io5";
+import { FaRegFileAlt } from "react-icons/fa";
+import { FaRegUser } from "react-icons/fa6";
+import { MdOutlineLock } from "react-icons/md";
+import { RiGitCommitLine } from "react-icons/ri";
+import { FaTv } from "react-icons/fa6";
+import { RiBarChartBoxLine } from "react-icons/ri";
+import { RiLayoutLeftLine } from "react-icons/ri";
+import { RiLayout4Line } from "react-icons/ri";
+import { RiCheckboxMultipleLine } from "react-icons/ri";
+import { RiTableAltLine } from "react-icons/ri";
+import { RiRadioButtonLine } from "react-icons/ri";
+import { ImTable2 } from "react-icons/im";
+import { RiFileCopyLine } from "react-icons/ri";
+import { RiMailOpenLine } from "react-icons/ri";
+import { RiWechatLine } from "react-icons/ri";
+import { RiDragDropLine } from "react-icons/ri";
+import { GoShieldLock } from "react-icons/go";
+import { RiCalendarLine } from "react-icons/ri";
 export const admin_sidebar = [
   // 1st section
   {
@@ -6,13 +28,13 @@ export const admin_sidebar = [
     list: [
       {
         id: 1,
-        icon: <FaHome />,
+        icon: <RiHomeSmileLine />,
         title: "Dashboard",
         expandable: true,
       },
       {
         id: 53353,
-        icon: <FaHome />,
+        icon: <RiFileCopyLine/>,
         title: "Front Pages",
         expandable: true,
       },
@@ -26,86 +48,86 @@ export const admin_sidebar = [
     list: [
       {
         id: 2,
-        icon: <FaHome />,
+        icon: <LuShoppingBag />,
         title: "Ecommerce",
         expandable: true,
       },
       {
         id: 50223,
-        icon: <FaHome />,
+        icon: <LuGraduationCap />,
         title: "Academy",
         expandable: true,
       },
       {
         id: 57973,
-        icon: <FaHome />,
+        icon: <IoCarSportOutline />,
         title: "Logistics",
         expandable: true,
       },
       {
         id: 40668,
-        icon: <FaHome />,
+        icon: <RiMailOpenLine />,
         title: "Email",
       },
       {
         id: 23096,
-        icon: <FaHome />,
+        icon: <RiWechatLine />,
         title: "Chat",
       },
       {
         id: 85108,
-        icon: <FaHome />,
+        icon: <RiCalendarLine />,
         title: "calender",
       },
       {
         id: 26879,
-        icon: <FaHome />,
+        icon: <RiDragDropLine />,
         title: "Kanban",
       },
       {
         id: 70052,
-        icon: <FaHome />,
+        icon: <FaRegFileAlt />,
         title: "invoice",
         expandable: true,
       },
       {
         id: 5616,
-        icon: <FaHome />,
+        icon: <FaRegUser />,
         title: "user",
         expandable: true,
       },
       {
         id: 37636,
-        icon: <FaHome />,
+        icon: <MdOutlineLock />,
         title: "roles  & permissions",
         expandable: true,
       },
       {
         id: 27961,
-        icon: <FaHome />,
+        icon: <RiLayoutLeftLine />,
         title: "pages",
         expandable: true,
       },
       {
         id: 98078,
-        icon: <FaHome />,
+        icon: <GoShieldLock />,
         title: "auth pages",
         expandable: true,
       },
       {
         id: 79908,
-        icon: <FaHome />,
+        icon: <RiGitCommitLine />,
         title: "wizard examples",
         expandable: true,
       },
       {
         id: 43973,
-        icon: <FaHome />,
+        icon: <FaTv />,
         title: "dialog examples",
       },
       {
         id: 92041,
-        icon: <FaHome />,
+        icon: <RiBarChartBoxLine />,
         title: "widget examples",
         expandable: true,
       },
@@ -119,33 +141,33 @@ export const admin_sidebar = [
     list: [
       {
         id: 26796,
-        icon: <FaHome />,
+        icon: <RiLayout4Line />,
         title: "Form layout",
       },
       {
         id: 41808,
-        icon: <FaHome />,
+        icon: <RiCheckboxMultipleLine />,
         title: "form validation",
       },
       {
         id: 50660,
-        icon: <FaHome />,
+        icon: <RiGitCommitLine />,
         title: "form wizard",
       },
       {
         id: 81897,
-        icon: <FaHome />,
+        icon: <RiTableAltLine />,
         title: "react tables",
       },
       {
         id: 40778,
-        icon: <FaHome />,
-        title: "MUI tables",
+        icon: <RiRadioButtonLine />,
+        title: "Form Elements",
       },
       {
         id: 2668,
-        icon: <FaHome />,
-        title: "Form Elements",
+        icon: <ImTable2 />,
+        title: "MUI tables",
       },
     ],
   },
