@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../assets/logo/logo.png";
 import { FaRegCircleDot } from "react-icons/fa6";
 import { admin_sidebar } from "../data/admin_sidebar_data";
 import { RiArrowDropRightLine } from "react-icons/ri";
+import { FaRegCircle } from "react-icons/fa";
 
-const AdminSidebar = () => {
+const AdminSidebar = ({ darkMode }) => {
+  const [open, setOpen] = useState();
+
+  const handleOpen = (id) => {
+    setOpen(open == id ? null : id);
+  };
+
   return (
     <>
       <div className="p-2 ps-0">
@@ -14,11 +21,15 @@ const AdminSidebar = () => {
         </div>
         <ul className="list-unstyled d-flex flex-column gap-1">
           {admin_sidebar?.map((item, index) => {
-            console.log(item);
             return (
               <>
                 {item?.name !== "" && (
-                  <li key={index} className="d-flex gap-2 align-items-center">
+                  <li
+                    key={index}
+                    className={` ${
+                      darkMode ? "dark-mode" : "text-gray"
+                    } d-flex gap-2 align-items-center `}
+                  >
                     <div
                       className="left-line"
                       style={{
@@ -29,7 +40,9 @@ const AdminSidebar = () => {
                     ></div>
                     <p
                       style={{ whiteSpace: "nowrap" }}
-                      className="text-sm text-secondary m-0"
+                      className={`text-sm text-secondary m-0 ${
+                        darkMode ? "dark-mode" : ""
+                      } `}
                     >
                       {item?.name}
                     </p>
@@ -46,20 +59,58 @@ const AdminSidebar = () => {
                 {/* // second list */}
                 {item?.list?.map((item2, index2) => {
                   return (
-                    <li
-                      key={index2}
-                      style={{ whiteSpace: "nowrap" }}
-                      className="d-flex gap-2 p-2 text-capitalize rounded-end-pill ps-0 hover-gray align-items-center text-gray"
-                    >
-                      <div className="d-flex justify-content-between text-gray align-items-center gap-2 w-100">
-                        <div className="">
-                          {item2?.icon} {item2.title}
+                    <>
+                      <li
+                        onClick={() => handleOpen(item2?.id)}
+                        key={index2}
+                        style={{
+                          whiteSpace: "nowrap",
+                        }}
+                        className={`d-flex gap-2 p-2 text-capitalize rounded-end-pill ps-0 hover-gray align-items-center   ${
+                          darkMode ? "dark-mode" : "text-gray"
+                        }`}
+                      >
+                        <div className="d-flex justify-content-between text-gray align-items-center gap-2 w-100">
+                          <div className={`${darkMode ? "dark-mode" : ""}`}>
+                            {item2?.icon} {item2.title}
+                          </div>
+                          {item2?.expandable && (
+                            <RiArrowDropRightLine
+                              color={darkMode && "white"}
+                              size={25}
+                            />
+                          )}
                         </div>
-                        {item2?.expandable && (
-                          <RiArrowDropRightLine size={25} />
-                        )}
-                      </div>
-                    </li>
+                      </li>
+
+                      {item2?.expandable && (
+                        <>
+                          <ul
+                            className={`list-unstyled transition-fast ${
+                              open == item2.id ? "open-sub-height" : "sub-list"
+                            } `}
+                          >
+                            {item2?.subList?.map((item3, index3) => {
+                              return (
+                                <>
+                                  <li
+                                    key={index3}
+                                    style={{
+                                      whiteSpace: "nowrap",
+                                    }}
+                                    className={`d-flex gap-2 p-2 text-capitalize rounded-end-pill ps-0 hover-gray align-items-center ${
+                                      darkMode ? "dark-mode" : "text-gray"
+                                    }`}
+                                  >
+                                    <FaRegCircle size={10} /> {item3?.title}
+                                  </li>
+                                </>
+                              );
+                            })}
+                          </ul>
+                        </>
+                      )}
+                    </>
                   );
                 })}
               </>

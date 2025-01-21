@@ -1,3 +1,33 @@
 body {
   background-color: #f4f5fa;
 }
+
+.sub-list {
+  height: 0;
+  overflow: hidden;
+}
+
+.open-sub-height {
+  height: 280px;
+  min-height: 80px;
+}
+
+.dark-toggle:hover {
+  background-color: #ede4ff;
+  color: #8c57ff;
+  cursor: pointer;
+}
+
+.dark-mode {
+  background-color: #28243d !important;
+  color: white !important;
+}
+
+.dark-mode {
+  color: white !important;
+  background-color: #28243d !important;
+}
+
+.bg-purple-light {
+  background-color: #ede4ff !important;
+}

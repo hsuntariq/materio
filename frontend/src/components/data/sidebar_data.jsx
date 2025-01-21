@@ -1,136 +1,152 @@
-import { PiBuildingApartmentLight } from "react-icons/pi";
-import { CiLock } from "react-icons/ci";
-import { IoIosImages } from "react-icons/io";
-import { RiArrowDropDownLine } from "react-icons/ri";
-
+import { FaHome } from "react-icons/fa";
 export const sidebar_data = [
+  // 1st section
   {
-    id: 1,
-    title: "Home",
-  },
-  {
-    id: 2,
-    title: "featutes",
-  },
-  {
-    id: 3,
-    title: "team",
-  },
-  {
-    id: 4,
-    title: "FAQ",
-  },
-  {
-    id: 5,
-    title: "contact us",
-  },
-  {
-    id: 6,
-    title: "pages",
-    my_icon: <RiArrowDropDownLine size={25} />,
-    myList: [
+    name: "",
+    list: [
       {
-        id: 6,
-        title: "pages",
-        icon: <PiBuildingApartmentLight />,
-        items: [
-          {
-            id: 1,
-            title: "pricing",
-          },
-          {
-            id: 2,
-            title: "payment",
-          },
-          {
-            id: 3,
-            title: "checkout",
-          },
-          {
-            id: 4,
-            title: "health center",
-          },
-        ],
+        id: 1,
+        icon: <FaHome />,
+        title: "Dashboard",
+        expandable: true,
       },
       {
-        id: 7,
-        title: "auth demo",
-        icon: <CiLock />,
-
-        items: [
-          {
-            id: 1,
-            title: "login (basic)",
-          },
-          {
-            id: 2,
-            title: "login (cover)",
-          },
-          {
-            id: 3,
-            title: "register (basic)",
-          },
-          {
-            id: 4,
-            title: "register (cover)",
-          },
-          {
-            id: 5,
-            title: "register (multi steps)",
-          },
-          {
-            id: 6,
-            title: "forgot password (basic)",
-          },
-          {
-            id: 7,
-            title: "forgot password (cover)",
-          },
-          {
-            id: 8,
-            title: "reset password (basic)",
-          },
-          {
-            id: 9,
-            title: "reset password (cover)",
-          },
-        ],
-      },
-      {
-        id: 8,
-        title: "auth demo",
-        icon: <IoIosImages />,
-        items: [
-          {
-            id: 1,
-            title: "login (basic)",
-          },
-          {
-            id: 2,
-            title: "login (cover)",
-          },
-          {
-            id: 3,
-            title: "register (basic)",
-          },
-          {
-            id: 4,
-            title: "register (cover)",
-          },
-          {
-            id: 5,
-            title: "register (multi steps)",
-          },
-          {
-            id: 6,
-            title: "forgot password (basic)",
-          },
-        ],
+        id: 53353,
+        icon: <FaHome />,
+        title: "Front Pages",
+        expandable: true,
       },
     ],
   },
+
+  //   2nd section
+
   {
-    id: 9,
-    title: "Admin",
+    name: "Apps & Pages",
+    list: [
+      {
+        id: 2,
+        icon: <FaHome />,
+        title: "Ecommerce",
+        expandable: true,
+      },
+      {
+        id: 50223,
+        icon: <FaHome />,
+        title: "Academy",
+        expandable: true,
+      },
+      {
+        id: 57973,
+        icon: <FaHome />,
+        title: "Logistics",
+        expandable: true,
+      },
+      {
+        id: 40668,
+        icon: <FaHome />,
+        title: "Email",
+      },
+      {
+        id: 23096,
+        icon: <FaHome />,
+        title: "Chat",
+      },
+      {
+        id: 85108,
+        icon: <FaHome />,
+        title: "calender",
+      },
+      {
+        id: 26879,
+        icon: <FaHome />,
+        title: "Kanban",
+      },
+      {
+        id: 70052,
+        icon: <FaHome />,
+        title: "invoice",
+        expandable: true,
+      },
+      {
+        id: 5616,
+        icon: <FaHome />,
+        title: "user",
+        expandable: true,
+      },
+      {
+        id: 37636,
+        icon: <FaHome />,
+        title: "roles  & permissions",
+        expandable: true,
+      },
+      {
+        id: 27961,
+        icon: <FaHome />,
+        title: "pages",
+        expandable: true,
+      },
+      {
+        id: 98078,
+        icon: <FaHome />,
+        title: "auth pages",
+        expandable: true,
+      },
+      {
+        id: 79908,
+        icon: <FaHome />,
+        title: "wizard examples",
+        expandable: true,
+      },
+      {
+        id: 43973,
+        icon: <FaHome />,
+        title: "dialog examples",
+      },
+      {
+        id: 92041,
+        icon: <FaHome />,
+        title: "widget examples",
+        expandable: true,
+      },
+    ],
+  },
+
+  //   third section
+  {
+    id: 3,
+    name: "Forms & tables",
+    list: [
+      {
+        id: 26796,
+        icon: <FaHome />,
+        title: "Form layout",
+      },
+      {
+        id: 41808,
+        icon: <FaHome />,
+        title: "form validation",
+      },
+      {
+        id: 50660,
+        icon: <FaHome />,
+        title: "form wizard",
+      },
+      {
+        id: 81897,
+        icon: <FaHome />,
+        title: "react tables",
+      },
+      {
+        id: 40778,
+        icon: <FaHome />,
+        title: "MUI tables",
+      },
+      {
+        id: 2668,
+        icon: <FaHome />,
+        title: "Form Elements",
+      },
+    ],
   },
 ];
