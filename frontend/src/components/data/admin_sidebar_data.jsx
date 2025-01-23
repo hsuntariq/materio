@@ -81,6 +81,20 @@ export const admin_sidebar = [
           {
             id: 13630,
             title: "Products",
+            nestedList: [
+              {
+                id: 4265434,
+                title: "List",
+              },
+              {
+                id: 456234,
+                title: "Add",
+              },
+              {
+                id: 32234,
+                title: "Category",
+              },
+            ],
           },
           {
             id: 17402,

@@ -5,6 +5,7 @@ import Visits from "./dashboard_cards/Visits";
 import Transactions from "./dashboard_cards/Transactions";
 import SalesChart from "./dashboard_cards/SalesChart";
 import RevenueChart from "./dashboard_cards/RevenueChart";
+import SalesOverview from "./dashboard_cards/SalesOverview";
 
 const DashboardSection = ({ darkMode, setDarkMode }) => {
   return (
@@ -35,6 +36,10 @@ const DashboardSection = ({ darkMode, setDarkMode }) => {
           <div className="col-lg-3 my-2 align-self-end col-md-6">
             {/* sales chart */}
             <RevenueChart />
+          </div>
+          <div className="col-lg-6 my-2 align-self-end">
+            {/* sales chart */}
+            <SalesOverview />
           </div>
         </div>
       </>

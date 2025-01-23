@@ -1,6 +1,10 @@
 :root {
   --purple: #8c57ff;
-  --gray: #40364e;
+  --gray: #423b50;
+}
+
+.border-purple {
+  border: 1px solid var(--purple) !important ;
 }
 .text-sm {
   font-size: 0.8rem !important;
@@ -104,4 +108,21 @@
 
 .hover-gray:hover {
   background-color: #ececf2 !important;
+}
+
+.object-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+vaadin-rich-text-editor {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+.ql-active {
+  background-color: var(--purple) !important;
+  color: white !important;
 }

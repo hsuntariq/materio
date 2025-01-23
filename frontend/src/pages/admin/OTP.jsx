@@ -3,11 +3,12 @@ import OtpInput from "react-otp-input";
 import { useDispatch, useSelector } from "react-redux";
 import { userReset, verifyOTPData } from "../../features/users/userSlice";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 export default function OTP() {
   const [otp, setOtp] = useState("");
 
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const { user, userMessage, userError, userLoading, userSuccess } =
     useSelector((state) => state.auth);
 
@@ -18,6 +19,7 @@ export default function OTP() {
 
     if (userSuccess) {
       toast.success("OTP verified!");
+      navigate("/admin/dashboard");
     }
 
     dispatch(userReset());

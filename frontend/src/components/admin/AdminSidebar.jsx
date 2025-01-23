@@ -7,9 +7,12 @@ import { FaRegCircle } from "react-icons/fa";
 
 const AdminSidebar = ({ darkMode }) => {
   const [open, setOpen] = useState();
-
+  const [open2, setOpen2] = useState();
   const handleOpen = (id) => {
     setOpen(open == id ? null : id);
+  };
+  const handleOpen2 = (id) => {
+    setOpen2(open2 == id ? null : id);
   };
 
   return (
