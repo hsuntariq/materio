@@ -3,6 +3,7 @@ import AdminHeader from "./AdminHeader";
 import { Button, Typography } from "@mui/material";
 import ProductInformation from "./add-products/ProductInformation";
 import ProductPricing from "./add-products/ProductPricing";
+import Image from "./add-products/Image";
 
 const ProductsSection = () => {
   return (
@@ -44,6 +45,13 @@ const ProductsSection = () => {
         <div className="col-md-4">
           <ProductPricing />
         </div>
+      </div>
+
+      <div className="p-4 row">
+        <div className="col-md-8">
+          <Image />
+        </div>
+        <div className="col-md-4"></div>
       </div>
     </>
   );
