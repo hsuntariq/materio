@@ -4,6 +4,8 @@ import { Button, Typography } from "@mui/material";
 import ProductInformation from "./add-products/ProductInformation";
 import ProductPricing from "./add-products/ProductPricing";
 import Image from "./add-products/Image";
+import Variant from "./add-products/Variant";
+import Inventory from "./add-products/Inventory";
 
 const ProductsSection = () => {
   return (
@@ -52,6 +54,16 @@ const ProductsSection = () => {
           <Image />
         </div>
         <div className="col-md-4"></div>
+      </div>
+      <div className="p-4 row">
+        <div className="col-md-8">
+          <Variant />
+        </div>
+      </div>
+      <div className="p-4 row">
+        <div className="col-md-8">
+          <Inventory />
+        </div>
       </div>
     </>
   );
