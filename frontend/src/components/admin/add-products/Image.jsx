@@ -4,9 +4,11 @@ import { Upload } from "lucide-react";
 import { Button, IconButton, Typography } from "@mui/material";
 import { IoClose } from "react-icons/io5";
 import axios from "axios";
-export default function ImageUpload() {
+import toast from "react-hot-toast";
+import { BarLoader } from "react-spinners";
+export default function ImageUpload({ formFields, setFormFields }) {
   const [images, setImages] = useState([]);
-
+  const [imageLoading, setImageLoading] = useState(false);
   const onDrop = (acceptedFiles) => {
     const newImages = acceptedFiles.map((file, index) => {
       return {
@@ -37,6 +39,8 @@ export default function ImageUpload() {
       return;
     }
 
+    setImageLoading(true);
+
     let myImages = images?.map(async (item, index) => {
       try {
         let data = new FormData();
@@ -47,14 +51,23 @@ export default function ImageUpload() {
           "https://api.cloudinary.com/v1_1/dwtsjgcyf/image/upload",
           data
         );
+        setImageLoading(false);
+
+        // setImages([]);
         return response.data.secure_url;
       } catch (error) {
         console.log(error);
+        toast.error(error.message);
+        setImageLoading(false);
       }
     });
 
     let imagesData = await Promise.all(myImages);
-    console.log(imagesData);
+    toast.success("Images uploaded successfully!");
+    setFormFields((recentValue) => ({
+      ...recentValue,
+      product_images: imagesData,
+    }));
   };
 
   return (
@@ -134,8 +147,14 @@ export default function ImageUpload() {
               </div>
             );
           })}
-          <Button onClick={uploadImage} className="bg-purple text-white">
-            Upload files
+          <Button
+            disabled={imageLoading}
+            onClick={uploadImage}
+            className={`${
+              imageLoading ? "bg-secondary p-3" : "bg-purple"
+            } text-white`}
+          >
+            {imageLoading ? <BarLoader color="white" /> : "Upload files"}
           </Button>
         </>
       )}

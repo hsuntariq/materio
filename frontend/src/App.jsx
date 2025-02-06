@@ -8,6 +8,8 @@ import { Toaster } from "react-hot-toast";
 import OTP from "./pages/admin/OTP";
 import Main from "./pages/admin/dashboard/Main";
 import AddProduct from "./pages/admin/dashboard/AddProduct";
+import "react-loading-skeleton/dist/skeleton.css";
+
 const App = () => {
   return (
     <>

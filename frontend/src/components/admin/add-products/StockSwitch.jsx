@@ -65,10 +65,20 @@ const IOSSwitch = styled((props) => (
   },
 }));
 
-export default function StockSwitch() {
+export default function StockSwitch({ product_stock, handleChange }) {
   return (
     <FormGroup>
-      <FormControlLabel control={<IOSSwitch sx={{ m: 1 }} defaultChecked />} />
+      <FormControlLabel
+        control={
+          <IOSSwitch
+            value={product_stock}
+            onChange={handleChange}
+            sx={{ m: 1 }}
+            name="product_stock"
+            defaultChecked
+          />
+        }
+      />
     </FormGroup>
   );
 }

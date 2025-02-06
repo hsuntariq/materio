@@ -1,85 +1,74 @@
-import { IconButton, MenuItem, Select, TextField } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
+import {
+  Button,
+  IconButton,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { IoClose } from "react-icons/io5";
 
-const VariantInputs = ({
-  size,
-  variantValue,
-  id,
-  removeVariantInput,
-  handleChange,
-}) => {
+const VariantInputs = ({ id, count, setCount, handleChange }) => {
+  const removeVariantInput = (id) => {
+    const newCount = count.filter((item) => item.id !== id);
+    setCount(newCount);
+  };
+
   return (
     <>
-      <div className="col-sm-4">
+      <div className="d-flex mb-1 align-items-center gap-2">
         <TextField
-          select
-          value={size}
-          onChange={(e) => handleChange(e, id)}
-          displayEmpty
           variant="outlined"
-          className="my-2 w-100"
-          name="product_variant"
+          label="Select Variant"
+          select
+          className="w-25 my-2"
+          name="type"
+          value={count?.type}
+          onChange={(e) => handleChange(id, e)}
           sx={{
-            "& label": {
-              // color: "#8C57FF", // Label color
-            },
-            "& label.Mui-focused": {
-              color: "#8C57FF", // Label color when focused
-            },
             "& .MuiOutlinedInput-root": {
-              "& fieldset": {
-                //   borderColor: "#8C57FF", // Default border color
-              },
-              "&:hover fieldset": {
-                //   borderColor: "#8C57FF", // Border color on hover
-              },
               "&.Mui-focused fieldset": {
-                borderColor: "#8C57FF", // Border color when focused
+                borderColor: "#8B50F8", // Change this to your desired color
+              },
+            },
+            "& .MuiInputLabel-root": {
+              "&.Mui-focused": {
+                color: "#8B50F8", // Change label color on focus
               },
             },
           }}
         >
-          <MenuItem value="size">Size</MenuItem>
-          <MenuItem value="color">Color</MenuItem>
+          <MenuItem value="wize">Size</MenuItem>
           <MenuItem value="weight">Weight</MenuItem>
+          <MenuItem value="color">Color</MenuItem>
           <MenuItem value="smell">Smell</MenuItem>
         </TextField>
-      </div>
-      <div className="col-sm-8">
-        <div className="d-flex">
-          <TextField
-            value={variantValue}
-            onChange={(e) => handleChange(e, id)}
-            placeholder="Enter variant value"
-            variant="outlined"
-            className="my-2 w-100"
-            label="Variant Value"
-            name="product_variant_value"
-            sx={{
-              "& label": {
-                // color: "#8C57FF", // Label color
+
+        <TextField
+          variant="outlined"
+          label="Variant Value"
+          className="w-100 my-2"
+          placeholder="Enter Variant Value"
+          name="variant"
+          value={count?.variant}
+          onChange={(e) => handleChange(id, e)}
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              "&.Mui-focused fieldset": {
+                borderColor: "#8B50F8", // Change this to your desired color
               },
-              "& label.Mui-focused": {
-                color: "#8C57FF", // Label color when focused
+            },
+            "& .MuiInputLabel-root": {
+              "&.Mui-focused": {
+                color: "#8B50F8", // Change label color on focus
               },
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  //   borderColor: "#8C57FF", // Default border color
-                },
-                "&:hover fieldset": {
-                  //   borderColor: "#8C57FF", // Border color on hover
-                },
-                "&.Mui-focused fieldset": {
-                  borderColor: "#8C57FF", // Border color when focused
-                },
-              },
-            }}
-          />
-          <IconButton onClick={() => removeVariantInput(id)}>
-            <IoClose />
-          </IconButton>
-        </div>
+            },
+          }}
+        />
+        <IconButton onClick={() => removeVariantInput(id)}>
+          <IoClose />
+        </IconButton>
       </div>
     </>
   );

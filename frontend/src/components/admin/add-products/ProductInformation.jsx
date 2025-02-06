@@ -2,12 +2,22 @@ import { TextField, Typography } from "@mui/material";
 import React from "react";
 import TextEditor from "./TextEditor";
 
-const ProductInformation = () => {
+const ProductInformation = ({
+  product_name,
+  product_sku,
+  product_barcode,
+  product_description,
+  handleChange,
+  setFormFields,
+  formFields,
+}) => {
   return (
     <>
       <div className="card shadow border-0 p-3">
         <Typography variant="h6">Product Information</Typography>
         <TextField
+          value={product_name}
+          onChange={handleChange}
           placeholder="iPhone14"
           variant="outlined"
           className="my-2"
@@ -36,6 +46,8 @@ const ProductInformation = () => {
         <div className="row">
           <div className="col-sm-6">
             <TextField
+              value={product_sku}
+              onChange={handleChange}
               placeholder="FX123SKU"
               variant="outlined"
               className="my-2 w-100"
@@ -64,6 +76,8 @@ const ProductInformation = () => {
           </div>
           <div className="col-sm-6">
             <TextField
+              value={product_barcode}
+              onChange={handleChange}
               placeholder="0123-45678"
               variant="outlined"
               className="my-2 w-100"
@@ -94,7 +108,12 @@ const ProductInformation = () => {
         <Typography variant="p" className="text-gray my-2">
           Description (Optional)
         </Typography>
-        <TextEditor />
+        <TextEditor
+          formFields={formFields}
+          setFormFields={setFormFields}
+          product_description={product_description}
+          // handleChange={handleChange}
+        />
       </div>
     </>
   );

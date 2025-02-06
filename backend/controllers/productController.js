@@ -63,6 +63,22 @@ const addProduct = handler(async (req, res) => {
   res.send(createdProduct);
 });
 
+const getAllProduct = handler(async (req, res) => {
+  let allProducts = await productModel.find();
+  res.send(allProducts);
+});
+
+const deleteAllProducts = async (req, res) => {
+  try {
+    await productModel.deleteMany({}); // Correct method
+    res.send("All products deleted successfully");
+  } catch (error) {
+    res.status(500).json({ message: "Error deleting products", error });
+  }
+};
+
 module.exports = {
   addProduct,
+  getAllProduct,
+  deleteAllProducts,
 };

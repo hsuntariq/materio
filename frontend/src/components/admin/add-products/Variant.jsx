@@ -1,67 +1,57 @@
-import {
-  Button,
-  IconButton,
-  MenuItem,
-  Select,
-  TextField,
-  Typography,
-} from "@mui/material";
-import React, { useState } from "react";
-import { BsPlug, BsPlus } from "react-icons/bs";
-import { IoClose } from "react-icons/io5";
+import React, { useEffect, useState } from "react";
+import { Button, Typography } from "@mui/material";
+import { GoPlus } from "react-icons/go";
 import VariantInputs from "./VariantInputs";
 
-const Variant = () => {
-  const [variants, setVariant] = useState([
-    { size: "", variantValue: "", id: Date.now() },
+const Variant = ({ formFields, setFormFields }) => {
+  const [count, setCount] = useState([
+    { id: Date.now(), type: "", variant: "" },
   ]);
-  const addField = () => {
-    setVariant([...variants, { size: "", variantValue: "", id: Date.now() }]);
-  };
 
-  const removeVariantInput = (id) => {
-    alert(id);
-    let newVariants = variants.filter((item, index) => {
-      return item?.id !== id;
-    });
-
-    setVariant(newVariants);
-  };
-
-  const handleChange = (e, id) => {
+  const handleCount = (id, e) => {
     const { name, value } = e.target;
-    setVariant((prevVariants) =>
-      prevVariants.map((variant) =>
-        variant.id === id ? { ...variant, [name]: value } : variant
-      )
+    const updatedCount = count.map((item) =>
+      item.id === id ? { ...item, [name]: value } : item
     );
+    setCount(updatedCount);
   };
+
+  useEffect(() => {
+    setFormFields((prevValues) => ({
+      ...prevValues,
+      product_variant: count,
+    }));
+  }, [count]);
 
   return (
-    <>
-      <div className="card p-3 shadow border-0">
-        <Typography variant="h6">Product Variant</Typography>
-
-        <div className="row">
-          {variants?.map((item, index) => {
-            return (
-              <VariantInputs
-                handleChange={handleChange}
-                {...item}
-                key={index}
-                removeVariantInput={removeVariantInput}
-              />
-            );
-          })}
-        </div>
-        <Button
-          onClick={addField}
-          className="bg-purple align-self-start text-white "
-        >
-          <BsPlus /> Add Another Option
-        </Button>
-      </div>
-    </>
+    <div className="card p-4 shadow my-2 border-0">
+      <Typography variant="h6" className="mb-2">
+        Product Variants
+      </Typography>
+      {count.map((item) => (
+        <VariantInputs
+          key={item.id}
+          id={item.id}
+          count={count}
+          setCount={setCount}
+          handleChange={handleCount}
+        />
+      ))}
+      <Button
+        onClick={() =>
+          setCount([...count, { id: Date.now(), type: "", variant: "" }])
+        }
+        sx={{
+          width: "max-content",
+          background: "#8B50F8",
+          color: "white",
+          fontWeight: "500",
+        }}
+      >
+        <GoPlus fontWeight={"bold"} size={20} />
+        Add Another Option
+      </Button>
+    </div>
   );
 };
 

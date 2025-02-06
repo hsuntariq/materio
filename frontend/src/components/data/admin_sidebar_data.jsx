@@ -41,22 +41,27 @@ export const admin_sidebar = [
           {
             id: 18395,
             title: "Landing",
+            link: "/",
           },
           {
             id: 13604,
             title: "Pricing",
+            link: "/admin/add-product",
           },
           {
             id: 17402,
             title: "Payment",
+            link: "/",
           },
           {
             id: 19654,
             title: "Checkout",
+            link: "/",
           },
           {
             id: 9783,
             title: "Help Center",
+            link: "/",
           },
         ],
       },
